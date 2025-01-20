@@ -15,5 +15,5 @@ rajasOfTheGanges =
     , gameName = "Rajas of the Ganges"
     , gameDescription = "Manage your dice to build profitable markets and grand monuments in historic India."
     , bggId = "220877"
-    , coverImage = "rajas/rajas-of-the-ganges.webp"
+    , coverImage = "./rajas/rajas-of-the-ganges.webp"
     }
