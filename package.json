@@ -7,7 +7,7 @@
     "tailwind:dev": "tailwindcss -i ./src/input.css -o ./app.css --watch",
     "build": "parcel build index.html --dist-dir build --public-url https://xtrakrispi.github.io/mautoma",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build -f"
   },
   "keywords": [],
   "author": "",
