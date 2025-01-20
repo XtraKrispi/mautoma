@@ -119,7 +119,7 @@ view model =
         [ Html.div [ class "flex justify-center" ]
             [ Html.img
                 [ class "opacity-20 absolute"
-                , src "rajas/rajas-of-the-ganges.webp"
+                , src "./rajas/rajas-of-the-ganges.webp"
                 ]
                 []
             ]

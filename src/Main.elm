@@ -125,7 +125,7 @@ subscriptions _ =
 menu : Html Msg
 menu =
     allGames
-        |> List.map (\g -> a [ href ("/" ++ g.slug) ] [ img [ src ("/" ++ g.coverImage) ] [] ])
+        |> List.map (\g -> a [ href g.slug ] [ img [ src g.coverImage ] [] ])
         |> div
             []
 

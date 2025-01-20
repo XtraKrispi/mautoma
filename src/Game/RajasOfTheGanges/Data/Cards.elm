@@ -6,8 +6,8 @@ import Game.RajasOfTheGanges.GameState exposing (AutomaAction(..), AutomaCard, B
 automaCards : List AutomaCard
 automaCards =
     [ { identifier = 1
-      , frontImage = "rajas/cards/card-1-front.png"
-      , backImage = "rajas/cards/card-1-back.png"
+      , frontImage = "./rajas/cards/card-1-front.png"
+      , backImage = "./rajas/cards/card-1-back.png"
       , automaAction = RiverAction
       , easyAdjustment = { fameAdjustment = 4, moneyAdjustment = 7 }
       , mediumAdjustment = { fameAdjustment = 4, moneyAdjustment = 7 }

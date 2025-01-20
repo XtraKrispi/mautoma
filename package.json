@@ -5,7 +5,7 @@
   "scripts": {
     "server:dev": "parcel index.html",
     "tailwind:dev": "tailwindcss -i ./src/input.css -o ./app.css --watch",
-    "build": "parcel build index.html --dist-dir build --public-url https://xtrakrispi.github.io/mautoma",
+    "build": "parcel build index.html --dist-dir build --public-url https://xtrakrispi.github.io/mautoma/",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -f"
   },
@@ -22,6 +22,7 @@
     "gh-pages": "^6.3.0",
     "parcel": "^2.13.3",
     "parcel-reporter-static-files-copy": "^1.5.3",
+    "parcel-transformer-elm-assets": "^1.0.3",
     "tailwindcss": "^3.4.17"
   }
 }
