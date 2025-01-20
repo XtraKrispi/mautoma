@@ -4,7 +4,7 @@ import Game.RajasOfTheGanges.Data.Cards exposing (automaCards)
 import Game.RajasOfTheGanges.GameState
     exposing
         ( AutomaCard
-        , Difficulty
+        , Difficulty(..)
         , GameMode(..)
         , GameState
         , extractDescription
@@ -20,8 +20,9 @@ import Html.Attributes
         , class
         , src
         , type_
+        , value
         )
-import Html.Events exposing (onCheck, onClick)
+import Html.Events exposing (onCheck, onClick, onInput)
 import Random exposing (generate)
 
 
@@ -34,7 +35,7 @@ type alias Model =
 
 type Msg
     = SelectGameMode GameMode
-    | SelectGameDifficulty Difficulty
+    | SelectGameDifficulty String
     | Randomized GameState
     | DrawCard
     | SetSetup Bool
@@ -66,7 +67,20 @@ update msg model =
             let
                 newGameState =
                     model.gameState
-                        |> (\gs -> { gs | difficulty = difficulty })
+                        |> (\gs ->
+                                { gs
+                                    | difficulty =
+                                        case difficulty of
+                                            "medium" ->
+                                                Medium
+
+                                            "hard" ->
+                                                Hard
+
+                                            _ ->
+                                                Easy
+                                }
+                           )
             in
             ( { model | gameState = newGameState }, Cmd.none )
 
@@ -188,10 +202,10 @@ setupRules model =
             ]
         , Html.p [ class "flex space-x-4 items-center" ]
             [ Html.span [] [ Html.text "Difficulty:" ]
-            , Html.select [ class "select w-full max-w-xs" ]
-                [ Html.option [] [ Html.text "Easy" ]
-                , Html.option [] [ Html.text "Medium" ]
-                , Html.option [] [ Html.text "Hard" ]
+            , Html.select [ class "select w-full max-w-xs", onInput SelectGameDifficulty ]
+                [ Html.option [ value "easy" ] [ Html.text "Easy" ]
+                , Html.option [ value "medium" ] [ Html.text "Medium" ]
+                , Html.option [ value "hard" ] [ Html.text "Hard" ]
                 ]
             ]
         , Html.p [ class "flex flex-col space-y-2" ]
