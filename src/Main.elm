@@ -1,6 +1,7 @@
 module Main exposing (main)
 
 import Browser
+import Browser.Hash as Hash
 import Browser.Navigation as Nav
 import Data.Games exposing (allGames)
 import Game.RajasOfTheGanges.Page as RajasOfTheGanges
@@ -15,7 +16,7 @@ import Url.Parser
 
 main : Program { gameData : Json.Encode.Value } Model Msg
 main =
-    Browser.application
+    Hash.application
         { init = init
         , view = view
         , update = update
@@ -125,7 +126,7 @@ subscriptions _ =
 menu : Html Msg
 menu =
     allGames
-        |> List.map (\g -> a [ href g.slug ] [ img [ src g.coverImage ] [] ])
+        |> List.map (\g -> a [ href ("#/" ++ g.slug) ] [ img [ src g.coverImage ] [] ])
         |> div
             []
 

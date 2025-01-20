@@ -119,7 +119,7 @@ view model =
         [ Html.div [ class "flex justify-center" ]
             [ Html.img
                 [ class "opacity-20 absolute"
-                , src "./rajas/rajas-of-the-ganges.webp"
+                , src "ASSET_URL:../static/rajas/rajas-of-the-ganges.webp"
                 ]
                 []
             ]
@@ -231,7 +231,7 @@ setupRules model =
                 [ Html.span [] [ Html.text "Arrange the province tiles in a 3x4 grid like this:" ]
                 , Html.div [ class "mt-2 ml-2" ]
                     [ Html.img
-                        [ src "/rajas/province-tile.png"
+                        [ src "ASSET_URL:../static/rajas/province-tile.png"
                         , class "w-8 h-8"
                         ]
                         []
@@ -304,7 +304,7 @@ currentCard _ card =
     case card of
         Nothing ->
             Html.div [ class "w-full border border-1 border-dotted rounded-lg" ]
-                [ Html.img [ class "opacity-0", src "/rajas/cards/card-1-front.png" ] []
+                [ Html.img [ class "opacity-0", src "ASSET_URL:../static/rajas/cards/card-1-front.png" ] []
                 ]
 
         Just c ->
