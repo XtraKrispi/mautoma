@@ -23,6 +23,7 @@ import Html.Attributes
         , value
         )
 import Html.Events exposing (onCheck, onClick, onInput)
+import Model exposing (GameMeta)
 import Random exposing (generate)
 
 
@@ -30,6 +31,7 @@ type alias Model =
     { gameState : GameState
     , setupOpen : Bool
     , gamePlayOpen : Bool
+    , gameMeta : GameMeta
     }
 
 
@@ -43,11 +45,12 @@ type Msg
     | EndRound
 
 
-init : Maybe GameState -> ( Model, Cmd Msg )
-init _ =
+init : GameMeta -> Maybe GameState -> ( Model, Cmd Msg )
+init meta _ =
     ( { gameState = initialGameState automaCards
       , setupOpen = False
       , gamePlayOpen = True
+      , gameMeta = meta
       }
     , generate Randomized (gameStateGenerator automaCards)
     )
@@ -133,7 +136,7 @@ view model =
         [ Html.div [ class "flex justify-center" ]
             [ Html.img
                 [ class "opacity-20 absolute"
-                , src "ASSET_URL:../static/rajas/rajas-of-the-ganges.webp"
+                , src model.gameMeta.coverImage
                 ]
                 []
             ]

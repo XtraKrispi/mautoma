@@ -4,12 +4,13 @@ import Browser
 import Browser.Hash as Hash
 import Browser.Navigation as Nav
 import Data.Games exposing (allGames)
+import Game.BrassLancashire.Page as BrassLancashire
 import Game.RajasOfTheGanges.Page as RajasOfTheGanges
 import Html exposing (..)
 import Html.Attributes exposing (href, src)
 import Json.Encode
 import Model exposing (Game(..))
-import Route exposing (Route, routeParser)
+import Route exposing (Route(..), routeParser)
 import Url
 import Url.Parser
 
@@ -29,6 +30,7 @@ main =
 type Page
     = HomePage
     | RajasOfTheGangesPage RajasOfTheGanges.Model
+    | BrassLancashirePage BrassLancashire.Model
 
 
 type alias Model =
@@ -55,9 +57,16 @@ getInitialPage route =
                 RajasOfTheGanges ->
                     let
                         ( mdl, cmd ) =
-                            RajasOfTheGanges.init Nothing
+                            RajasOfTheGanges.init gameMeta Nothing
                     in
                     ( RajasOfTheGangesPage mdl, Cmd.map RajasOfTheGangesMsg cmd )
+
+                BrassLancashire ->
+                    let
+                        ( mdl, cmd ) =
+                            BrassLancashire.init gameMeta Nothing
+                    in
+                    ( BrassLancashirePage mdl, Cmd.map BrassLancashireMsg cmd )
 
 
 init :
@@ -80,6 +89,7 @@ type Msg
     = UrlRequested Browser.UrlRequest
     | UrlChanged Url.Url
     | RajasOfTheGangesMsg RajasOfTheGanges.Msg
+    | BrassLancashireMsg BrassLancashire.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -117,6 +127,18 @@ update msg model =
                 _ ->
                     ( model, Cmd.none )
 
+        BrassLancashireMsg m ->
+            case model.page of
+                BrassLancashirePage mdl ->
+                    let
+                        ( newModel, newCmd ) =
+                            BrassLancashire.update m mdl
+                    in
+                    ( { model | page = BrassLancashirePage newModel }, Cmd.map BrassLancashireMsg newCmd )
+
+                _ ->
+                    ( model, Cmd.none )
+
 
 subscriptions : Model -> Sub Msg
 subscriptions _ =
@@ -144,6 +166,9 @@ view model =
 
                 RajasOfTheGangesPage mdl ->
                     Html.map RajasOfTheGangesMsg (RajasOfTheGanges.view mdl)
+
+                BrassLancashirePage mdl ->
+                    Html.map BrassLancashireMsg (BrassLancashire.view mdl)
             ]
         ]
     }

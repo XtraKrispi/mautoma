@@ -3,6 +3,7 @@ module Model exposing (..)
 
 type Game
     = RajasOfTheGanges
+    | BrassLancashire
 
 
 type alias GameMeta =
@@ -17,3 +18,4 @@ type alias GameMeta =
 
 type GameState
     = RajasOfTheGangesGameState
+    | BrassLancashireGameState

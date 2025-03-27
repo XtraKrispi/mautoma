@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "homepage": "https://xtrakrispi.github.io/mautoma",
   "scripts": {
+    "start": "npm run server:dev & npm run tailwind:dev",
     "server:dev": "parcel index.html",
     "tailwind:dev": "tailwindcss -i ./src/input.css -o ./app.css --watch",
     "build": "parcel build ./index.html --dist-dir build --public-url https://xtrakrispi.github.io/mautoma",
@@ -16,13 +17,16 @@
   "devDependencies": {
     "@parcel/transformer-elm": "^2.13.3",
     "@tailwindcss/typography": "^0.5.16",
-    "daisyui": "^4.12.23",
+    "daisyui": "^5.0.9",
     "elm": "^0.19.1-6",
     "elm-format": "^0.8.7",
     "gh-pages": "^6.3.0",
     "parcel": "^2.13.3",
     "parcel-reporter-static-files-copy": "^1.5.3",
-    "parcel-transformer-elm-assets": "^1.0.3",
-    "tailwindcss": "^3.4.17"
+    "parcel-transformer-elm-assets": "^1.0.3"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.16",
+    "tailwindcss": "^4.0.16"
   }
 }
