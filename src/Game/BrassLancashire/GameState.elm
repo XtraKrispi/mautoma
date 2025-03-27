@@ -22,7 +22,10 @@ type Era
 
 
 type alias GameState =
-    { mapSelection : Map, difficulty : DifficultyLevel }
+    { mapSelection : Map
+    , difficulty : DifficultyLevel
+    , canalDeck : List AutomaCard
+    }
 
 
 type DifficultyLevel

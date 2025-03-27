@@ -2641,14 +2641,14 @@
   .table {
     display: table;
   }
+  .h-0 {
+    height: calc(var(--spacing) * 0);
+  }
   .h-8 {
     height: calc(var(--spacing) * 8);
   }
   .w-8 {
     width: calc(var(--spacing) * 8);
-  }
-  .w-32 {
-    width: calc(var(--spacing) * 32);
   }
   .w-64 {
     width: calc(var(--spacing) * 64);
@@ -2785,6 +2785,12 @@
   }
   .p-4 {
     padding: calc(var(--spacing) * 4);
+  }
+  .p-5 {
+    padding: calc(var(--spacing) * 5);
+  }
+  .p-5\! {
+    padding: calc(var(--spacing) * 5) !important;
   }
   .text-xl {
     font-size: var(--text-xl);
