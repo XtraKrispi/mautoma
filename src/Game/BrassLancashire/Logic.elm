@@ -1,7 +1,7 @@
 module Game.BrassLancashire.Logic exposing (..)
 
 import Game.BrassLancashire.Data.Cards exposing (automaCards)
-import Game.BrassLancashire.GameState exposing (AutomaCard, Era(..), Group(..), Map)
+import Game.BrassLancashire.GameState exposing (AutomaCard, EffectiveEra(..), Era(..), Group(..), Map)
 import Random exposing (Generator)
 import Random.List
 
@@ -37,20 +37,20 @@ topXAndThen1 x cards =
             )
 
 
-setupCanalEra : Map -> Generator (List AutomaCard)
-setupCanalEra map =
+setupEra : EffectiveEra -> Map -> Generator (List AutomaCard)
+setupEra era map =
     let
         aCards =
             automaCards
-                |> List.filter (\c -> c.era == AllEras && c.group == A && (c.map == Nothing || c.map == Just map))
+                |> List.filter (\c -> c.era == era && c.group == A && (c.map == Nothing || c.map == Just map))
 
         bCards =
             automaCards
-                |> List.filter (\c -> c.era == AllEras && c.group == B && (c.map == Nothing || c.map == Just map))
+                |> List.filter (\c -> c.era == era && c.group == B && (c.map == Nothing || c.map == Just map))
 
         cCards =
             automaCards
-                |> List.filter (\c -> c.era == AllEras && c.group == C && (c.map == Nothing || c.map == Just map))
+                |> List.filter (\c -> c.era == era && c.group == C && (c.map == Nothing || c.map == Just map))
     in
     topXAndThen1 4 aCards
         |> Random.andThen
@@ -80,6 +80,11 @@ setupCanalEra map =
             )
 
 
+setupCanalEra : Map -> Generator (List AutomaCard)
+setupCanalEra =
+    setupEra AllEras
+
+
 setupRailEra : Map -> Generator (List AutomaCard)
-setupRailEra _ =
-    Debug.todo ""
+setupRailEra =
+    setupEra OnlyRailEra

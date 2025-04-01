@@ -1,6 +1,6 @@
 module Game.BrassLancashire.Page exposing (..)
 
-import Game.BrassLancashire.GameState exposing (AutomaCard, DifficultyLevel(..), GameState, Map(..))
+import Game.BrassLancashire.GameState exposing (AutomaCard, DifficultyLevel(..), Era(..), GameState, Map(..))
 import Game.BrassLancashire.Logic exposing (setupCanalEra)
 import Html exposing (Html)
 import Html.Attributes exposing (..)
@@ -22,7 +22,7 @@ type Msg
     | SetGamePlay Bool
     | SelectMap Map
     | ChangeDifficulty DifficultyLevel
-    | CanalDeckSetup (List AutomaCard)
+    | DeckSetup (List AutomaCard)
 
 
 init : GameMeta -> Maybe GameState -> ( Model, Cmd Msg )
@@ -30,13 +30,16 @@ init meta _ =
     ( { gameState =
             { mapSelection = SmallMap
             , difficulty = Easy
-            , canalDeck = []
+            , currentDeck = []
+            , activeCard = Nothing
+            , discardPile = []
+            , currentEra = Canal
             }
       , setupOpen = False
       , gamePlayOpen = True
       , gameMeta = meta
       }
-    , Random.generate CanalDeckSetup (setupCanalEra SmallMap)
+    , Random.generate DeckSetup (setupCanalEra SmallMap)
     )
 
 
@@ -55,7 +58,7 @@ update msg model =
                     model.gameState
             in
             ( { model | gameState = { gs | mapSelection = map } }
-            , Random.generate CanalDeckSetup (setupCanalEra map)
+            , Random.generate DeckSetup (setupCanalEra map)
             )
 
         ChangeDifficulty diff ->
@@ -65,12 +68,12 @@ update msg model =
             in
             ( { model | gameState = { gs | difficulty = diff } }, Cmd.none )
 
-        CanalDeckSetup cards ->
+        DeckSetup cards ->
             let
                 gs =
                     model.gameState
             in
-            ( { model | gameState = { gs | canalDeck = cards } }, Cmd.none )
+            ( { model | gameState = { gs | currentDeck = cards } }, Cmd.none )
 
 
 view : Model -> Html Msg

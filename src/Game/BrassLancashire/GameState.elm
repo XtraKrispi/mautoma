@@ -6,7 +6,7 @@ type alias AutomaCard =
     , frontImage : String
     , backImage : String
     , map : Maybe Map
-    , era : Era
+    , era : EffectiveEra
     , group : Group
     }
 
@@ -16,15 +16,23 @@ type Map
     | SmallMap
 
 
-type Era
-    = RailEra
+type EffectiveEra
+    = OnlyRailEra
     | AllEras
+
+
+type Era
+    = Rail
+    | Canal
 
 
 type alias GameState =
     { mapSelection : Map
     , difficulty : DifficultyLevel
-    , canalDeck : List AutomaCard
+    , currentDeck : List AutomaCard
+    , activeCard : Maybe AutomaCard
+    , discardPile : List AutomaCard
+    , currentEra : Era
     }
 
 

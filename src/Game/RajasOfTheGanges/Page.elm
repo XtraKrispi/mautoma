@@ -320,8 +320,12 @@ currentCard : Model -> Maybe AutomaCard -> Html Msg
 currentCard _ card =
     case card of
         Nothing ->
-            Html.div [ class "w-full border border-1 border-dotted rounded-lg" ]
-                [ Html.img [ class "opacity-0", src "ASSET_URL:../static/rajas/cards/card-1-front.png" ] []
+            Html.div [ class "w-full border-1 border-dotted rounded-lg" ]
+                [ Html.img
+                    [ class "opacity-0"
+                    , src "ASSET_URL:../static/rajas/cards/card-1-front.png"
+                    ]
+                    []
                 ]
 
         Just c ->

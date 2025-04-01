@@ -1,6 +1,12 @@
 module Game.BrassLancashire.Data.Cards exposing (..)
 
-import Game.BrassLancashire.GameState exposing (AutomaCard, Era(..), Group(..), Map(..))
+import Game.BrassLancashire.GameState
+    exposing
+        ( AutomaCard
+        , EffectiveEra(..)
+        , Group(..)
+        , Map(..)
+        )
 
 
 automaCards : List AutomaCard
@@ -8,7 +14,7 @@ automaCards =
     [ { cardNumber = 1
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-1-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-1-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Just LargeMap
       , group = C
       }
@@ -22,7 +28,7 @@ automaCards =
     , { cardNumber = 3
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-3-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-3-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Nothing
       , group = C
       }
@@ -36,7 +42,7 @@ automaCards =
     , { cardNumber = 5
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-5-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-5-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Just SmallMap
       , group = A
       }
@@ -50,7 +56,7 @@ automaCards =
     , { cardNumber = 7
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-7-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-7-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Just LargeMap
       , group = C
       }
@@ -78,7 +84,7 @@ automaCards =
     , { cardNumber = 11
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-11-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-11-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Just SmallMap
       , group = C
       }
@@ -99,7 +105,7 @@ automaCards =
     , { cardNumber = 14
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-14-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-14-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Just LargeMap
       , group = B
       }
@@ -120,7 +126,7 @@ automaCards =
     , { cardNumber = 17
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-17-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-17-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Just SmallMap
       , group = C
       }
@@ -141,14 +147,14 @@ automaCards =
     , { cardNumber = 20
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-20-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-20-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Just SmallMap
       , group = C
       }
     , { cardNumber = 21
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-21-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-21-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Nothing
       , group = A
       }
@@ -162,14 +168,14 @@ automaCards =
     , { cardNumber = 23
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-23-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-23-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Just LargeMap
       , group = A
       }
     , { cardNumber = 24
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-24-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-24-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Just SmallMap
       , group = A
       }
@@ -218,7 +224,7 @@ automaCards =
     , { cardNumber = 31
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-31-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-31-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Nothing
       , group = B
       }
@@ -232,7 +238,7 @@ automaCards =
     , { cardNumber = 33
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-33-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-33-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Just SmallMap
       , group = B
       }
@@ -246,14 +252,14 @@ automaCards =
     , { cardNumber = 35
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-35-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-35-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Nothing
       , group = C
       }
     , { cardNumber = 36
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-36-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-36-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Just LargeMap
       , group = B
       }
@@ -288,7 +294,7 @@ automaCards =
     , { cardNumber = 41
       , frontImage = "ASSET_URL:../static/brass-lancashire/cards/card-41-front.png"
       , backImage = "ASSET_URL:../static/brass-lancashire/cards/card-41-back.png"
-      , era = RailEra
+      , era = OnlyRailEra
       , map = Just LargeMap
       , group = A
       }
